@@ -1,0 +1,257 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F293B9A51A7190D700D09E73 /* bigcub.h in Headers */ = {isa = PBXBuildFile; fileRef = F293B9A41A7190D700D09E73 /* bigcub.h */; };
+		F293B9A71A7190D700D09E73 /* bigcubPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = F293B9A61A7190D700D09E73 /* bigcubPriv.h */; };
+		F293B9A91A7190D700D09E73 /* bigcub.cp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9A81A7190D700D09E73 /* bigcub.cp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F293B9A11A7190D700D09E73 /* libbigcub.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbigcub.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		F293B9A41A7190D700D09E73 /* bigcub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bigcub.h; sourceTree = "<group>"; };
+		F293B9A61A7190D700D09E73 /* bigcubPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bigcubPriv.h; sourceTree = "<group>"; };
+		F293B9A81A7190D700D09E73 /* bigcub.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bigcub.cp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F293B99E1A7190D700D09E73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F293B9981A7190D700D09E73 = {
+			isa = PBXGroup;
+			children = (
+				F293B9A31A7190D700D09E73 /* bigcub */,
+				F293B9A21A7190D700D09E73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F293B9A21A7190D700D09E73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F293B9A11A7190D700D09E73 /* libbigcub.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F293B9A31A7190D700D09E73 /* bigcub */ = {
+			isa = PBXGroup;
+			children = (
+				F293B9A41A7190D700D09E73 /* bigcub.h */,
+				F293B9A61A7190D700D09E73 /* bigcubPriv.h */,
+				F293B9A81A7190D700D09E73 /* bigcub.cp */,
+			);
+			path = bigcub;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F293B99F1A7190D700D09E73 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F293B9A51A7190D700D09E73 /* bigcub.h in Headers */,
+				F293B9A71A7190D700D09E73 /* bigcubPriv.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F293B9A01A7190D700D09E73 /* bigcub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F293B9AC1A7190D700D09E73 /* Build configuration list for PBXNativeTarget "bigcub" */;
+			buildPhases = (
+				F293B99D1A7190D700D09E73 /* Sources */,
+				F293B99E1A7190D700D09E73 /* Frameworks */,
+				F293B99F1A7190D700D09E73 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bigcub;
+			productName = bigcub;
+			productReference = F293B9A11A7190D700D09E73 /* libbigcub.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F293B9991A7190D700D09E73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Andy Pilate";
+				TargetAttributes = {
+					F293B9A01A7190D700D09E73 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = F293B99C1A7190D700D09E73 /* Build configuration list for PBXProject "bigcub" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F293B9981A7190D700D09E73;
+			productRefGroup = F293B9A21A7190D700D09E73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F293B9A01A7190D700D09E73 /* bigcub */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F293B99D1A7190D700D09E73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F293B9A91A7190D700D09E73 /* bigcub.cp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F293B9AA1A7190D700D09E73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F293B9AB1A7190D700D09E73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F293B9AD1A7190D700D09E73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F293B9AE1A7190D700D09E73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F293B99C1A7190D700D09E73 /* Build configuration list for PBXProject "bigcub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F293B9AA1A7190D700D09E73 /* Debug */,
+				F293B9AB1A7190D700D09E73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F293B9AC1A7190D700D09E73 /* Build configuration list for PBXNativeTarget "bigcub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F293B9AD1A7190D700D09E73 /* Debug */,
+				F293B9AE1A7190D700D09E73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F293B9991A7190D700D09E73 /* Project object */;
+}
