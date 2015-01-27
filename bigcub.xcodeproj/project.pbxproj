@@ -7,16 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F293B9A51A7190D700D09E73 /* bigcub.h in Headers */ = {isa = PBXBuildFile; fileRef = F293B9A41A7190D700D09E73 /* bigcub.h */; };
-		F293B9A71A7190D700D09E73 /* bigcubPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = F293B9A61A7190D700D09E73 /* bigcubPriv.h */; };
-		F293B9A91A7190D700D09E73 /* bigcub.cp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9A81A7190D700D09E73 /* bigcub.cp */; };
+		F293B9B41A71912400D09E73 /* bigcub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9B01A71912400D09E73 /* bigcub.cpp */; };
+		F293B9B51A71912400D09E73 /* bigcub.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F293B9B11A71912400D09E73 /* bigcub.hpp */; };
+		F293B9B61A71912400D09E73 /* vmanip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9B21A71912400D09E73 /* vmanip.cpp */; };
+		F293B9B71A71912400D09E73 /* vmanip.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F293B9B31A71912400D09E73 /* vmanip.hpp */; };
+		F293B9C21A71924400D09E73 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9C11A71924400D09E73 /* tests.cpp */; };
+		F293B9C61A71944C00D09E73 /* libbigcub.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F293B9A11A7190D700D09E73 /* libbigcub.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F293B9BD1A71924400D09E73 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F293B9A11A7190D700D09E73 /* libbigcub.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbigcub.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		F293B9A41A7190D700D09E73 /* bigcub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bigcub.h; sourceTree = "<group>"; };
-		F293B9A61A7190D700D09E73 /* bigcubPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bigcubPriv.h; sourceTree = "<group>"; };
-		F293B9A81A7190D700D09E73 /* bigcub.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bigcub.cp; sourceTree = "<group>"; };
+		F293B9B01A71912400D09E73 /* bigcub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bigcub.cpp; sourceTree = "<group>"; };
+		F293B9B11A71912400D09E73 /* bigcub.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bigcub.hpp; sourceTree = "<group>"; };
+		F293B9B21A71912400D09E73 /* vmanip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vmanip.cpp; sourceTree = "<group>"; };
+		F293B9B31A71912400D09E73 /* vmanip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vmanip.hpp; sourceTree = "<group>"; };
+		F293B9BF1A71924400D09E73 /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		F293B9C11A71924400D09E73 /* tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,13 +45,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F293B9BC1A71924400D09E73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F293B9C61A71944C00D09E73 /* libbigcub.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		F293B9981A7190D700D09E73 = {
 			isa = PBXGroup;
 			children = (
-				F293B9A31A7190D700D09E73 /* bigcub */,
+				F293B9AF1A71910300D09E73 /* src */,
+				F293B9C01A71924400D09E73 /* tests */,
 				F293B9A21A7190D700D09E73 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -42,18 +69,28 @@
 			isa = PBXGroup;
 			children = (
 				F293B9A11A7190D700D09E73 /* libbigcub.dylib */,
+				F293B9BF1A71924400D09E73 /* tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F293B9A31A7190D700D09E73 /* bigcub */ = {
+		F293B9AF1A71910300D09E73 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				F293B9A41A7190D700D09E73 /* bigcub.h */,
-				F293B9A61A7190D700D09E73 /* bigcubPriv.h */,
-				F293B9A81A7190D700D09E73 /* bigcub.cp */,
+				F293B9B01A71912400D09E73 /* bigcub.cpp */,
+				F293B9B11A71912400D09E73 /* bigcub.hpp */,
+				F293B9B21A71912400D09E73 /* vmanip.cpp */,
+				F293B9B31A71912400D09E73 /* vmanip.hpp */,
 			);
-			path = bigcub;
+			name = src;
+			sourceTree = "<group>";
+		};
+		F293B9C01A71924400D09E73 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				F293B9C11A71924400D09E73 /* tests.cpp */,
+			);
+			name = tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -63,8 +100,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F293B9A51A7190D700D09E73 /* bigcub.h in Headers */,
-				F293B9A71A7190D700D09E73 /* bigcubPriv.h in Headers */,
+				F293B9B51A71912400D09E73 /* bigcub.hpp in Headers */,
+				F293B9B71A71912400D09E73 /* vmanip.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +125,23 @@
 			productReference = F293B9A11A7190D700D09E73 /* libbigcub.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
+		F293B9BE1A71924400D09E73 /* tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F293B9C31A71924400D09E73 /* Build configuration list for PBXNativeTarget "tests" */;
+			buildPhases = (
+				F293B9BB1A71924400D09E73 /* Sources */,
+				F293B9BC1A71924400D09E73 /* Frameworks */,
+				F293B9BD1A71924400D09E73 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tests;
+			productName = tests;
+			productReference = F293B9BF1A71924400D09E73 /* tests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,6 +152,9 @@
 				ORGANIZATIONNAME = "Andy Pilate";
 				TargetAttributes = {
 					F293B9A01A7190D700D09E73 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					F293B9BE1A71924400D09E73 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
@@ -115,6 +172,7 @@
 			projectRoot = "";
 			targets = (
 				F293B9A01A7190D700D09E73 /* bigcub */,
+				F293B9BE1A71924400D09E73 /* tests */,
 			);
 		};
 /* End PBXProject section */
@@ -124,7 +182,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F293B9A91A7190D700D09E73 /* bigcub.cp in Sources */,
+				F293B9B61A71912400D09E73 /* vmanip.cpp in Sources */,
+				F293B9B41A71912400D09E73 /* bigcub.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F293B9BB1A71924400D09E73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F293B9C21A71924400D09E73 /* tests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +202,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -149,9 +216,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -175,7 +245,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -192,7 +262,9 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -211,9 +283,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -224,9 +296,29 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F293B9C41A71924400D09E73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F293B9C51A71924400D09E73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -250,6 +342,16 @@
 				F293B9AE1A7190D700D09E73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F293B9C31A71924400D09E73 /* Build configuration list for PBXNativeTarget "tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F293B9C41A71924400D09E73 /* Debug */,
+				F293B9C51A71924400D09E73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
