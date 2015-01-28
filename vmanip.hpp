@@ -15,6 +15,7 @@
 
 namespace vmanip {
     typedef std::vector<bool> Type;
+    typedef Type::size_type size_type;
     
     template<typename T>
     using IntOnly = typename std::enable_if<std::is_integral<T>::value>::type;
@@ -24,6 +25,12 @@ namespace vmanip {
     
     template<typename T, typename = IntOnly<T>>
     T intExport(Type const &n);
+    
+    template<class BinaryOperation>
+    void transform(Type a, Type b, Type &dest, BinaryOperation op);
+    
+    template<class UnaryOperation>
+    void transform(Type &dest, UnaryOperation op);
     
     void add(Type a, Type b, Type &dest);
     void extend(Type &a, Type &b);
@@ -37,8 +44,8 @@ vmanip::Type vmanip::intImport(T const &n) {
     Type toReturn;
     toReturn.reserve(sizeof(n) * CHAR_BIT);
     
-    for (size_t i = 0; i < sizeof(n) * CHAR_BIT; ++i) {
-        toReturn.push_back((n >> i) & static_cast<T>(1));
+    for (size_type i = 0; i < sizeof(n) * CHAR_BIT; ++i) {
+        toReturn.push_back((n >> i) & 1);
     }
     
     if (std::is_unsigned<T>::value) { // If unsigned, we need to convert into
@@ -57,7 +64,7 @@ T vmanip::intExport(Type const &n) {
         return toReturn;
     }
     
-    size_t i = 0;
+    size_type i = 0;
     for (; (i < n.size()) && i < sizeof(T) * CHAR_BIT; ++i) {
         toReturn |= (static_cast<T>(n[i]) << i);
     }
@@ -67,6 +74,26 @@ T vmanip::intExport(Type const &n) {
     }
     
     return toReturn;
+}
+
+template<class BinaryOperation>
+void vmanip::transform(Type a, Type b, Type &dest, BinaryOperation op) {
+    extend(a, b);
+    
+    dest.resize(a.size());
+    
+    for (auto i : dest) {
+        dest[i] = op(a[i], b[i]);
+    }
+    
+    compress(dest);
+}
+
+template<class UnaryOperation>
+void vmanip::transform(Type &dest, UnaryOperation op) {
+    for (auto i : dest) {
+        dest[i] = op();
+    }
 }
 
 #pragma GCC visibility pop

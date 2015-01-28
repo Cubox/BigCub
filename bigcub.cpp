@@ -36,7 +36,7 @@ BigCub::BigCub(char const *str) {
     size_t strSize = std::strlen(str);
     str = str + (strSize - 1);
     for (size_t i = 1; i <= strSize; ++i, --str) {
-        if (std::isdigit(*str)) { // oh god this is horrible pls fix
+        if (std::isdigit(*str)) { // FIXME: oh god this is horrible pls fix
             *this += (*str - '0') * static_cast<uintmax_t>(std::pow(10, i - 1));
         }
 	}
@@ -56,10 +56,34 @@ BigCub::~BigCub() {
     
 }
 
-// Public getters
+// Internal data access related operators
 
-BigCub::Type &BigCub::getRawBits() {
+BigCub::Type::reference BigCub::operator[](size_type n) {
+    return data[n];
+}
+
+BigCub::Type::const_reference const BigCub::operator[](size_type n) const {
+    return data[n];
+}
+
+BigCub::Type::reference BigCub::at(size_type n) {
+    return data.at(n);
+}
+
+BigCub::Type::const_reference const BigCub::at(size_type n) const {
+    return data.at(n);
+}
+
+BigCub::Type &BigCub::operator*() {
     return data;
+}
+
+BigCub::Type const &BigCub::operator*() const {
+    return data;
+}
+
+BigCub::size_type BigCub::size() const {
+    return data.size();
 }
 
 // Assignation operators
@@ -72,31 +96,72 @@ BigCub &BigCub::operator=(BigCub const &n) {
 }
 
 BigCub &BigCub::operator+=(BigCub const &n) {
-    *this = *this + n;
+    vmanip::add(data, n.data, data);
     return *this;
 }
 
 BigCub &BigCub::operator-=(BigCub const &n) {
-    *this = *this - n;
+    Type invertedOther = n.data;
+    vmanip::invert(invertedOther);
+    vmanip::add(data, invertedOther, data);
+    return *this;
+}
+
+BigCub &BigCub::operator&=(BigCub const &n) {
+    vmanip::transform(data, n.data, data, std::bit_and<bool>());
+    return *this;
+}
+
+BigCub &BigCub::operator|=(BigCub const &n) {
+    vmanip::transform(data, n.data, data, std::bit_or<bool>());
+    return *this;
+}
+
+BigCub &BigCub::operator^=(BigCub const &n) {
+   vmanip::transform(data, n.data, data, std::bit_xor<bool>());
+    return *this;
+}
+
+BigCub &BigCub::operator<<=(size_type const &n) {
+    if (n > data.size()) {
+        vmanip::transform(data, [](){return false;});
+    }
+    else {
+        data.erase(data.end() - n, data.end());
+        data.insert(data.begin(), n, false);
+    }
+    
+    vmanip::compress(data);
+    
+    return *this;
+}
+
+BigCub &BigCub::operator>>=(size_type const &n) {
+    if (n > data.size()) {
+        vmanip::transform(data, [this](){return this->data.back();});
+    }
+    else {
+        data.erase(data.end() - n, data.end());
+        data.insert(data.begin(), n, false);
+    }
+    
+    vmanip::compress(data);
+    
     return *this;
 }
 
 // Arithmetic operators
 
 BigCub BigCub::operator+(BigCub const &n) const {
-	BigCub toReturn;
-    
-    vmanip::add(data, n.data, toReturn.data);
+	BigCub toReturn(*this);
+    toReturn += n;
     
     return toReturn;
 }
 
 BigCub BigCub::operator-(BigCub const &n) const {
-    BigCub toReturn;
-    
-    Type invertedOther = n.data;
-    vmanip::invert(invertedOther);
-    vmanip::add(data, invertedOther, toReturn.data);
+    BigCub toReturn(*this);
+    toReturn -= n;
     
     return toReturn;
 }
@@ -116,10 +181,8 @@ BigCub &BigCub::operator++() {
 }
 
 BigCub BigCub::operator++(int) {
-    BigCub toReturn;
-    
-    Type one = {true, false};
-    vmanip::add(data, one, toReturn.data);
+    BigCub toReturn(*this);
+    ++toReturn;
     
     return toReturn;
 }
@@ -132,10 +195,8 @@ BigCub &BigCub::operator--() {
 }
 
 BigCub BigCub::operator--(int) {
-    BigCub toReturn;
-    
-    Type one = {true, true};
-    vmanip::add(data, one, toReturn.data);
+    BigCub toReturn(*this);
+    --toReturn;
     
     return toReturn;
 }
@@ -167,6 +228,40 @@ bool BigCub::operator>=(BigCub const &n) const {
 }
 
 // Bitwise operators
+
+BigCub BigCub::operator&(BigCub const &n) const {
+    BigCub toReturn(*this);
+    toReturn &= n;
+    return toReturn;
+}
+
+BigCub BigCub::operator|(BigCub const &n) const {
+    BigCub toReturn(*this);
+    toReturn |= n;
+    
+    return toReturn;
+}
+
+BigCub BigCub::operator^(BigCub const &n) const {
+    BigCub toReturn(*this);
+    toReturn ^= n;
+    
+    return toReturn;
+}
+
+BigCub BigCub::operator<<(size_type const &n) const {
+    BigCub toReturn(*this);
+    toReturn <<= n;
+    
+    return toReturn;
+}
+
+BigCub BigCub::operator>>(size_type const &n) const {
+    BigCub toReturn(*this);
+    toReturn >>= n;
+    
+    return toReturn;
+}
 
 BigCub BigCub::operator~() const {
     BigCub toReturn(*this);
