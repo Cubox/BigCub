@@ -23,7 +23,7 @@ void vmanip::add(Type a, Type b, Type &dest) {
     extend(a, b);
     dest.reserve(a.size());
     
-    size_t i = 0;
+    size_type i = 0;
     for (bool carry = false; i < a.size(); ++i) {
         dest.push_back(a[i] ^ b[i] ^ carry);
         carry = (a[i] & b[i]) | (carry & (a[i] ^ b[i]));
@@ -33,6 +33,8 @@ void vmanip::add(Type a, Type b, Type &dest) {
     if (~(a[i] ^ b[i]) & (a[i] ^ dest[i])) {
         dest.push_back(a[i]);
     }
+    
+    compress(dest);
 }
 
 void vmanip::compress(Type &bits) {
@@ -40,7 +42,7 @@ void vmanip::compress(Type &bits) {
         return;
     }
     
-    size_t i = bits.size() - 1;
+    size_type i = bits.size() - 1;
     for (; i > 2 && bits[i] == bits[i - 1]; --i);
     
     bits.resize(i + 1);
@@ -66,7 +68,7 @@ int8_t vmanip::compare(Type a, Type b) {
         return -1;
     }
     
-    for (size_t i = 0; i < a.size() - 1; ++i) {
+    for (size_type i = 0; i < a.size() - 1; ++i) {
         if (a[i] == false && b[i] == true) {
             return -1;
         }
