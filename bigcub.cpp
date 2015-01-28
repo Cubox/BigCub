@@ -7,11 +7,17 @@
 #include "vmanip.hpp"
 #include "bigcub.hpp"
 
+// Constructors
+
 BigCub::BigCub(void) {
     
 }
 
-BigCub::BigCub(std::vector<bool> const &n) {
+BigCub::BigCub(BigCub const &n) {
+    *this = n;
+}
+
+BigCub::BigCub(Type const &n) {
     data = std::vector<bool>(n);
     vmanip::compress(data);
 }
@@ -44,24 +50,38 @@ BigCub::BigCub(std::string const &str) : BigCub(str.c_str()) {
     
 }
 
-BigCub::BigCub(BigCub const &n) {
-    *this = n;
-}
-
-BigCub &BigCub::operator=(BigCub const &toAssign) {
-    data = std::vector<bool>(toAssign.data);
-    vmanip::compress(data);
-    
-    return *this;
-}
+// Destructor
 
 BigCub::~BigCub() {
     
 }
 
+// Public getters
+
 BigCub::Type &BigCub::getRawBits() {
     return data;
 }
+
+// Assignation operators
+
+BigCub &BigCub::operator=(BigCub const &n) {
+    data = std::vector<bool>(n.data);
+    vmanip::compress(data);
+    
+    return *this;
+}
+
+BigCub &BigCub::operator+=(BigCub const &n) {
+    *this = *this + n;
+    return *this;
+}
+
+BigCub &BigCub::operator-=(BigCub const &n) {
+    *this = *this - n;
+    return *this;
+}
+
+// Arithmetic operators
 
 BigCub BigCub::operator+(BigCub const &n) const {
 	BigCub toReturn;
@@ -69,11 +89,6 @@ BigCub BigCub::operator+(BigCub const &n) const {
     vmanip::add(data, n.data, toReturn.data);
     
     return toReturn;
-}
-
-BigCub &BigCub::operator+=(BigCub const &n) {
-    *this = *this + n;
-    return *this;
 }
 
 BigCub BigCub::operator-(BigCub const &n) const {
@@ -125,6 +140,34 @@ BigCub BigCub::operator--(int) {
     return toReturn;
 }
 
+// Comparaison operators
+
+bool BigCub::operator==(BigCub const &n) const {
+    return vmanip::compare(data, n.data) == 0;
+}
+
+bool BigCub::operator!=(BigCub const &n) const {
+    return vmanip::compare(data, n.data) != 0;
+}
+
+bool BigCub::operator<(BigCub const &n) const {
+    return vmanip::compare(data, n.data) < 0;
+}
+
+bool BigCub::operator>(BigCub const &n) const {
+    return vmanip::compare(data, n.data) > 0;
+}
+
+bool BigCub::operator<=(BigCub const &n) const {
+    return vmanip::compare(data, n.data) <= 0;
+}
+
+bool BigCub::operator>=(BigCub const &n) const {
+    return vmanip::compare(data, n.data) >= 0;
+}
+
+// Bitwise operators
+
 BigCub BigCub::operator~() const {
     BigCub toReturn(*this);
     toReturn.data.flip();
@@ -132,29 +175,7 @@ BigCub BigCub::operator~() const {
     return toReturn;
 }
 
-bool BigCub::operator==(BigCub const &n) {
-    return vmanip::compare(data, n.data) == 0;
-}
-
-bool BigCub::operator!=(BigCub const &n) {
-    return vmanip::compare(data, n.data) != 0;
-}
-
-bool BigCub::operator>(BigCub const &n) {
-    return vmanip::compare(data, n.data) > 0;
-}
-
-bool BigCub::operator<(BigCub const &n) {
-    return vmanip::compare(data, n.data) < 0;
-}
-
-bool BigCub::operator>=(BigCub const &n) {
-    return vmanip::compare(data, n.data) >= 0;
-}
-
-bool BigCub::operator<=(BigCub const &n) {
-    return vmanip::compare(data, n.data) <= 0;
-}
+// std::cout overload
 
 std::ostream &operator<<(std::ostream &o, BigCub const &n) {
     o << static_cast<intmax_t>(n);
