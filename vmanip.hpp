@@ -39,6 +39,10 @@ vmanip::Type vmanip::intImport(T const &n) {
         toReturn.push_back((n >> i) & static_cast<T>(1));
     }
     
+    if (std::is_unsigned<T>::value) { // If unsigned, we need to convert into
+        toReturn.push_back(false);    // signed form.
+    }
+    
     compress(toReturn);
     return toReturn;
 }
