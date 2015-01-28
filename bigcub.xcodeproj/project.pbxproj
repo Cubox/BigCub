@@ -32,7 +32,7 @@
 		F293B9B01A71912400D09E73 /* bigcub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bigcub.cpp; sourceTree = "<group>"; };
 		F293B9B11A71912400D09E73 /* bigcub.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bigcub.hpp; sourceTree = "<group>"; };
 		F293B9B21A71912400D09E73 /* vmanip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vmanip.cpp; sourceTree = "<group>"; };
-		F293B9B31A71912400D09E73 /* vmanip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vmanip.hpp; sourceTree = "<group>"; };
+		F293B9B31A71912400D09E73 /* vmanip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; lineEnding = 0; path = vmanip.hpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		F293B9BF1A71924400D09E73 /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		F293B9C11A71924400D09E73 /* tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */

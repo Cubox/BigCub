@@ -21,8 +21,10 @@ namespace vmanip {
     
     template<typename T, typename = IntOnly<T>>
     Type intImport(T const &n);
+    
     template<typename T, typename = IntOnly<T>>
     T intExport(Type const &n);
+    
     void add(Type a, Type b, Type &dest);
     void extend(Type &a, Type &b);
     void compress(Type &bits);
