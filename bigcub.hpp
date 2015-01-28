@@ -117,7 +117,7 @@ BigCub::BigCub(T const &n) {
 template<typename T, typename>
 BigCub BigCub::operator+(T const &n) const {
     BigCub toReturn;
-    vmanip::add(toReturn.data, vmanip::intImport(n), toReturn.data);
+    vmanip::add(data, vmanip::intImport(n), toReturn.data);
     
     return toReturn;
 }
@@ -131,7 +131,7 @@ BigCub &BigCub::operator+=(T const &n) {
 template<typename T, typename>
 BigCub BigCub::operator-(T const &n) const {
     BigCub toReturn;
-    vmanip::add(toReturn.data, vmanip::intImport(-n), toReturn.data);
+    vmanip::add(data, vmanip::intImport(-n), toReturn.data);
     
     return toReturn;
 }

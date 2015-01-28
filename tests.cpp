@@ -19,7 +19,7 @@
 
 int main() {
     BigCub lol(50);
-    for (size_t i = 0; i < 100000; ++i) {
+    for (size_t i = 0; i < 10000000; ++i) {
         lol += ULLONG_MAX;
     }
     std::cout << lol.getRawBits().size() << std::endl;
