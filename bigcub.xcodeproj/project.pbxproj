@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F293B9B41A71912400D09E73 /* bigcub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9B01A71912400D09E73 /* bigcub.cpp */; };
-		F293B9B51A71912400D09E73 /* bigcub.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F293B9B11A71912400D09E73 /* bigcub.hpp */; };
-		F293B9B61A71912400D09E73 /* vmanip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9B21A71912400D09E73 /* vmanip.cpp */; };
-		F293B9B71A71912400D09E73 /* vmanip.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F293B9B31A71912400D09E73 /* vmanip.hpp */; };
-		F293B9C21A71924400D09E73 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293B9C11A71924400D09E73 /* tests.cpp */; };
+		F21561E11A79A9F8009A2289 /* bigcub.t.h++ in Headers */ = {isa = PBXBuildFile; fileRef = F21561E01A79A90F009A2289 /* bigcub.t.h++ */; };
+		F21561E31A79AE23009A2289 /* vmanip.t.h++ in Headers */ = {isa = PBXBuildFile; fileRef = F21561E21A79AE23009A2289 /* vmanip.t.h++ */; };
+		F293B9B41A71912400D09E73 /* bigcub.c++ in Sources */ = {isa = PBXBuildFile; fileRef = F293B9B01A71912400D09E73 /* bigcub.c++ */; };
+		F293B9B51A71912400D09E73 /* bigcub.h++ in Headers */ = {isa = PBXBuildFile; fileRef = F293B9B11A71912400D09E73 /* bigcub.h++ */; };
+		F293B9B61A71912400D09E73 /* vmanip.c++ in Sources */ = {isa = PBXBuildFile; fileRef = F293B9B21A71912400D09E73 /* vmanip.c++ */; };
+		F293B9B71A71912400D09E73 /* vmanip.h++ in Headers */ = {isa = PBXBuildFile; fileRef = F293B9B31A71912400D09E73 /* vmanip.h++ */; };
+		F293B9C21A71924400D09E73 /* tests.c++ in Sources */ = {isa = PBXBuildFile; fileRef = F293B9C11A71924400D09E73 /* tests.c++ */; };
 		F293B9C61A71944C00D09E73 /* libbigcub.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F293B9A11A7190D700D09E73 /* libbigcub.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -28,13 +30,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F21561E01A79A90F009A2289 /* bigcub.t.h++ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "bigcub.t.h++"; sourceTree = "<group>"; };
+		F21561E21A79AE23009A2289 /* vmanip.t.h++ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "vmanip.t.h++"; sourceTree = "<group>"; };
 		F293B9A11A7190D700D09E73 /* libbigcub.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbigcub.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		F293B9B01A71912400D09E73 /* bigcub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bigcub.cpp; sourceTree = "<group>"; };
-		F293B9B11A71912400D09E73 /* bigcub.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bigcub.hpp; sourceTree = "<group>"; };
-		F293B9B21A71912400D09E73 /* vmanip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vmanip.cpp; sourceTree = "<group>"; };
-		F293B9B31A71912400D09E73 /* vmanip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; lineEnding = 0; path = vmanip.hpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		F293B9B01A71912400D09E73 /* bigcub.c++ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "bigcub.c++"; sourceTree = "<group>"; };
+		F293B9B11A71912400D09E73 /* bigcub.h++ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "bigcub.h++"; sourceTree = "<group>"; };
+		F293B9B21A71912400D09E73 /* vmanip.c++ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "vmanip.c++"; sourceTree = "<group>"; };
+		F293B9B31A71912400D09E73 /* vmanip.h++ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; lineEnding = 0; path = "vmanip.h++"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		F293B9BF1A71924400D09E73 /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
-		F293B9C11A71924400D09E73 /* tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; };
+		F293B9C11A71924400D09E73 /* tests.c++ */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "tests.c++"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +81,12 @@
 		F293B9AF1A71910300D09E73 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				F293B9B01A71912400D09E73 /* bigcub.cpp */,
-				F293B9B11A71912400D09E73 /* bigcub.hpp */,
-				F293B9B21A71912400D09E73 /* vmanip.cpp */,
-				F293B9B31A71912400D09E73 /* vmanip.hpp */,
+				F293B9B01A71912400D09E73 /* bigcub.c++ */,
+				F21561E01A79A90F009A2289 /* bigcub.t.h++ */,
+				F293B9B11A71912400D09E73 /* bigcub.h++ */,
+				F293B9B21A71912400D09E73 /* vmanip.c++ */,
+				F21561E21A79AE23009A2289 /* vmanip.t.h++ */,
+				F293B9B31A71912400D09E73 /* vmanip.h++ */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -88,7 +94,7 @@
 		F293B9C01A71924400D09E73 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				F293B9C11A71924400D09E73 /* tests.cpp */,
+				F293B9C11A71924400D09E73 /* tests.c++ */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -100,8 +106,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F293B9B51A71912400D09E73 /* bigcub.hpp in Headers */,
-				F293B9B71A71912400D09E73 /* vmanip.hpp in Headers */,
+				F21561E11A79A9F8009A2289 /* bigcub.t.h++ in Headers */,
+				F21561E31A79AE23009A2289 /* vmanip.t.h++ in Headers */,
+				F293B9B51A71912400D09E73 /* bigcub.h++ in Headers */,
+				F293B9B71A71912400D09E73 /* vmanip.h++ in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,8 +190,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F293B9B61A71912400D09E73 /* vmanip.cpp in Sources */,
-				F293B9B41A71912400D09E73 /* bigcub.cpp in Sources */,
+				F293B9B61A71912400D09E73 /* vmanip.c++ in Sources */,
+				F293B9B41A71912400D09E73 /* bigcub.c++ in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F293B9C21A71924400D09E73 /* tests.cpp in Sources */,
+				F293B9C21A71924400D09E73 /* tests.c++ in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

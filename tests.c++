@@ -12,17 +12,114 @@
 #include <random>
 #include <cstdint>
 #include <chrono>
-//#include <gmpxx.h>
-#include <bigcub.hpp>
+#include <bigcub.h++>
 
-#define cassert(x) tried++; if (x) ok++;
+#define cassert(x) assert(x)
+
+
+void initTests() {
+    BigCub tmp;
+    cassert(static_cast<int>(tmp) == 0);
+
+    for (uintmax_t i = 0; i < ULLONG_MAX; ++i) {
+        BigCub tmp1(i);
+        BigCub tmp2(-i);
+        
+        cassert(static_cast<uintmax_t>(tmp1) == i);
+        cassert(static_cast<uintmax_t>(tmp2) == -i);
+    }
+}
+
+void arithTests() {
+    for (uint32_t i = 0; i < INT_MAX; ++i ) {
+        BigCub tmp1(i);
+        BigCub tmp2(i);
+        
+        cassert(tmp1 + tmp2 == i + i);
+        cassert(tmp1 + (tmp2 + 10) == i + (i + 10));
+        cassert(++tmp1 == ++i);
+        cassert(--tmp1 == --i);
+        cassert(-tmp1 == -i);
+    }
+    
+    std::random_device rd;
+    
+    for (auto i = 0; i < 100000; i++) {
+        intmax_t i1 = rd();
+        intmax_t i2 = -rd();
+        
+        cassert(static_cast<int64_t>(BigCub(i1) + BigCub(i2)) == static_cast<int64_t>(i1 + i2));
+        cassert(static_cast<int64_t>(BigCub(i1) - BigCub(i2)) == static_cast<int64_t>(i1 - i2));
+        cassert(static_cast<int64_t>(-BigCub(i1) + BigCub(i2)) == static_cast<int64_t>(-i1 + i2));
+        cassert(static_cast<int64_t>(BigCub(i1) + -BigCub(i2)) == static_cast<int64_t>(i1 + -i2));
+        
+        cassert(static_cast<int64_t>(BigCub(-i1) + BigCub(i2)) == static_cast<int64_t>(-i1 + i2));
+        cassert(static_cast<int64_t>(BigCub(-i1) - BigCub(i2)) == static_cast<int64_t>(-i1 - i2));
+        cassert(static_cast<int64_t>(-BigCub(-i1) + BigCub(i2)) == static_cast<int64_t>(i1 + i2));
+        cassert(static_cast<int64_t>(BigCub(-i1) + -BigCub(i2)) == static_cast<int64_t>(-i1 + -i2));
+        
+        cassert(static_cast<int64_t>(BigCub(i1) + BigCub(-i2)) == static_cast<int64_t>(i1 + -i2));
+        cassert(static_cast<int64_t>(BigCub(i1) - BigCub(-i2)) == static_cast<int64_t>(i1 - -i2));
+        cassert(static_cast<int64_t>(-BigCub(i1) + BigCub(-i2)) == static_cast<int64_t>(-i1 + -i2));
+        cassert(static_cast<int64_t>(BigCub(i1) + -BigCub(-i2)) == static_cast<int64_t>(i1 + i2));
+        
+        cassert(static_cast<int64_t>(BigCub(-i1) + BigCub(-i2)) == static_cast<int64_t>(-i1 + -i2));
+        cassert(static_cast<int64_t>(BigCub(-i1) - BigCub(-i2)) == static_cast<int64_t>(-i1 - -i2));
+        cassert(static_cast<int64_t>(-BigCub(-i1) + BigCub(-i2)) == static_cast<int64_t>(i1 + -i2));
+        cassert(static_cast<int64_t>(BigCub(-i1) + -BigCub(-i2)) == static_cast<int64_t>(-i1 + i2));
+        
+        cassert(static_cast<int64_t>(++BigCub(i1)) == ++i1);
+        cassert(static_cast<int64_t>(--BigCub(i1)) == --i1);
+        
+        cassert(static_cast<int64_t>(++BigCub(i2)) == ++i2);
+        cassert(static_cast<int64_t>(--BigCub(i2)) == --i2);
+
+        
+    }
+}
+
+void cmpTests() {
+    for (uintmax_t i = 0; i < ULLONG_MAX; ++i) {
+        BigCub tmp1(i);
+        BigCub tmp2(-i);
+        
+        cassert((tmp1 == tmp2) == (i == -i));
+        cassert((tmp1 != tmp2) == (i != -i));
+        cassert((tmp1 < tmp2) == (i < -i));
+        cassert((tmp1 > tmp2) == (i > -i));
+        cassert((tmp1 <= tmp2) == (i <= -i));
+        cassert((tmp1 >= tmp2) == (i >= -i));
+        
+        cassert((tmp2 == i) == (i == -i));
+        cassert((tmp2 != i) == (i != -i));
+        cassert((tmp2 < i) == (i < -i));
+        cassert((tmp2 > i) == (i > -i));
+        cassert((tmp2 <= i) == (i <= -i));
+        cassert((tmp2 >= i) == (i >= -i));
+    }
+    
+    std::random_device rd;
+    
+    for (auto i = 0; i < 100000; i++) {
+        intmax_t i1 = rd();
+        intmax_t i2 = -rd();
+        
+        BigCub tmp1(i1);
+        BigCub tmp2(i2);
+        
+        cassert((tmp1 == tmp2) == (i1 == i2));
+        cassert((tmp1 != tmp2) == (i1 != i2));
+        cassert((tmp1 < tmp2) == (i1 < i2));
+        cassert((tmp1 > tmp2) == (i1 > i2));
+        cassert((tmp1 <= tmp2) == (i1 <= i2));
+        cassert((tmp1 >= tmp2) == (i1 >= i2));
+        
+    }
+}
 
 int main() {
-    BigCub lol(50);
-    for (size_t i = 0; i < 1000; ++i) {
-        lol += ULLONG_MAX;
-    }
-    std::cout << lol.size() << std::endl;
+//    initTests();
+//    arithTests();
     
     return 0;
 }
