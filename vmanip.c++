@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Andy Pilate. All rights reserved.
 //
 
-#include "vmanip.hpp"
+#include "vmanip.h++"
 
 void vmanip::add(Type a, Type b, Type &dest) {
     dest.clear();

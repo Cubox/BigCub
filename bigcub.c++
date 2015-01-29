@@ -4,8 +4,8 @@
 #include <cmath>
 #include <ostream>
 
-#include "vmanip.hpp"
-#include "bigcub.hpp"
+#include "vmanip.h++"
+#include "bigcub.h++"
 
 // Constructors
 
@@ -23,27 +23,27 @@ BigCub::BigCub(Type const &n) {
 }
 
 BigCub::BigCub(char const *str) {
-    if (str == NULL || str[0] == '\0') {
-        return;
-    }
-    
-    bool negative = false;
-    
-    if (str[0] == '-') {
-        negative = true;
-    }
-    
-    size_t strSize = std::strlen(str);
-    str = str + (strSize - 1);
-    for (size_t i = 1; i <= strSize; ++i, --str) {
-        if (std::isdigit(*str)) { // FIXME: oh god this is horrible pls fix
-            *this += (*str - '0') * static_cast<uintmax_t>(std::pow(10, i - 1));
-        }
-	}
-    
-    if (negative) {
-        vmanip::invert(data);
-    }
+//    if (str == NULL || str[0] == '\0') {
+//        return;
+//    }
+//    
+//    bool negative = false;
+//    
+//    if (str[0] == '-') {
+//        negative = true;
+//    }
+//    
+//    size_t strSize = std::strlen(str);
+//    str = str + (strSize - 1);
+//    for (size_t i = 1; i <= strSize; ++i, --str) {
+//        if (std::isdigit(*str)) { // FIXME: oh god this is horrible pls fix
+//            *this += (*str - '0') * static_cast<uintmax_t>(std::pow(10, i - 1));
+//        }
+//	}
+//    
+//    if (negative) {
+//        vmanip::invert(data);
+//    }
 }
 
 BigCub::BigCub(std::string const &str) : BigCub(str.c_str()) {
