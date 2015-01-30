@@ -127,7 +127,6 @@ BigCub BigCub::operator|(T const &n) const {
     BigCub toReturn(*this);
     toReturn |= n;
     
-    
     return toReturn;
 }
 
