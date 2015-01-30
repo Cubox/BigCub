@@ -21,11 +21,11 @@ void vmanip::add(Type a, Type b, Type &dest) {
     }
     
     extend(a, b);
-    dest.reserve(a.size());
+    dest.resize(a.size());
     
     size_type i = 0;
-    for (bool carry = false; i < a.size(); ++i) {
-        dest.push_back(a[i] ^ b[i] ^ carry);
+    for (bool carry = false; i < dest.size(); ++i) {
+        dest[i] = (a[i] ^ b[i] ^ carry);
         carry = (a[i] & b[i]) | (carry & (a[i] ^ b[i]));
     }
     --i;
@@ -38,14 +38,14 @@ void vmanip::add(Type a, Type b, Type &dest) {
 }
 
 void vmanip::compress(Type &bits) {
-    if (bits.size() == 0) {
-        return;
-    }
-    
-    size_type i = bits.size() - 1;
-    for (; i > 2 && bits[i] == bits[i - 1]; --i);
-    
-    bits.resize(i + 1);
+//    if (bits.size() == 0) {
+//        return;
+//    }
+//    
+//    size_type i = bits.size() - 1;
+//    for (; i > 2 && bits[i] == bits[i - 1]; --i);
+//    
+//    bits.resize(i + 1);
 }
 
 void vmanip::invert(Type &bits) {
