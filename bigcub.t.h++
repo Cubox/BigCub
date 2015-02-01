@@ -42,6 +42,13 @@ BigCub &BigCub::operator-=(T const &n) {
 }
 
 template<typename T, typename>
+BigCub &BigCub::operator*=(T const &n) {
+    vmanip::mul(data, vmanip::intImport(-n), data);
+    
+    return *this;
+}
+
+template<typename T, typename>
 BigCub &BigCub::operator&=(T const &n) {
     vmanip::transform(data, vmanip::intImport<T>(n), data, std::bit_and<bool>());
     
@@ -76,6 +83,14 @@ template<typename T, typename>
 BigCub BigCub::operator-(T const &n) const {
     BigCub toReturn(*this);
     toReturn -= n;
+    
+    return toReturn;
+}
+
+template<typename T, typename>
+BigCub BigCub::operator*(T const &n) const {
+    BigCub toReturn(*this);
+    toReturn *= n;
     
     return toReturn;
 }

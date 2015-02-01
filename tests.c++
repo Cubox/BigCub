@@ -32,18 +32,27 @@ void initTests() {
 }
 
 void arithTests() {
-    for (int32_t i = 0; i < INT_MAX; ++i ) {
-        BigCub tmp1(i);
-        BigCub tmp2(i);
-        
-        cassert(static_cast<int32_t>(tmp1 + tmp2) == static_cast<int32_t>(i + i));
-        cassert(static_cast<int32_t>(tmp1 + (tmp2 + 10)) == static_cast<int32_t>(i + (i + 10)));
-        cassert(static_cast<int32_t>(++tmp1) == static_cast<int32_t>(++i));
-        cassert(static_cast<int32_t>(--tmp1) == static_cast<int32_t>(--i));
-        cassert(static_cast<int32_t>(-tmp1) == static_cast<int32_t>(-i));
-    }
+    
+//    std::cout << "Starting range arith tests" << std::endl;
+//    
+//    for (int32_t i = 0; i < INT_MAX; ++i ) {
+//        BigCub tmp1(i);
+//        BigCub tmp2(i);
+//        
+//        cassert(static_cast<int32_t>(tmp1 + tmp2) == static_cast<int32_t>(i + i));
+//        cassert(static_cast<int32_t>(tmp1 + (tmp2 + 10)) == static_cast<int32_t>(i + (i + 10)));
+//        cassert(static_cast<int32_t>(++tmp1) == static_cast<int32_t>(++i));
+//        cassert(static_cast<int32_t>(--tmp1) == static_cast<int32_t>(--i));
+//        cassert(static_cast<int32_t>(-tmp1) == static_cast<int32_t>(-i));
+//        
+//        cassert(static_cast<int32_t>(BigCub(i) * BigCub(i)) == static_cast<int32_t>(i * i));
+//        
+//        cassert(static_cast<int32_t>(BigCub(i) * BigCub(-i)) == static_cast<int32_t>(i * -i));
+//    }
     
     std::random_device rd;
+    
+    std::cout << "Starting random arith tests" << std::endl;
     
     for (auto i = 0; i < 100000; i++) {
         intmax_t i1 = rd();
@@ -75,29 +84,32 @@ void arithTests() {
         cassert(static_cast<int64_t>(++BigCub(i2)) == ++i2);
         cassert(static_cast<int64_t>(--BigCub(i2)) == --i2);
 
-        
+        cassert(static_cast<int64_t>(BigCub(i1) * BigCub(i2)) == static_cast<int64_t>(i1 * i2));
     }
 }
 
 void cmpTests() {
-    for (intmax_t i = 0; i < LLONG_MAX; ++i) {
-        BigCub tmp1(i);
-        BigCub tmp2(-i);
-        
-        cassert((tmp1 == tmp2) == (i == -i));
-        cassert((tmp1 != tmp2) == (i != -i));
-        cassert((tmp1 < tmp2) == (i < -i));
-        cassert((tmp1 > tmp2) == (i > -i));
-        cassert((tmp1 <= tmp2) == (i <= -i));
-        cassert((tmp1 >= tmp2) == (i >= -i));
-        
-        cassert((tmp2 == i) == (i == -i));
-        cassert((tmp2 != i) == (i != -i));
-        cassert((tmp2 < i) == (-i < i));
-        cassert((tmp2 > i) == (-i > i));
-        cassert((tmp2 <= i) == (-i <= i));
-        cassert((tmp2 >= i) == (-i >= i));
-    }
+//    std::cout << "Starting range cmp tests" << std::endl;
+//    for (intmax_t i = 0; i < LLONG_MAX; ++i) {
+//        BigCub tmp1(i);
+//        BigCub tmp2(-i);
+//        
+//        cassert((tmp1 == tmp2) == (i == -i));
+//        cassert((tmp1 != tmp2) == (i != -i));
+//        cassert((tmp1 < tmp2) == (i < -i));
+//        cassert((tmp1 > tmp2) == (i > -i));
+//        cassert((tmp1 <= tmp2) == (i <= -i));
+//        cassert((tmp1 >= tmp2) == (i >= -i));
+//        
+//        cassert((tmp2 == i) == (i == -i));
+//        cassert((tmp2 != i) == (i != -i));
+//        cassert((tmp2 < i) == (-i < i));
+//        cassert((tmp2 > i) == (-i > i));
+//        cassert((tmp2 <= i) == (-i <= i));
+//        cassert((tmp2 >= i) == (-i >= i));
+//    }
+    
+    std::cout << "Starting random cmp tests" << std::endl;
     
     std::random_device rd;
     
@@ -107,6 +119,9 @@ void cmpTests() {
         
         BigCub tmp1(i1);
         BigCub tmp2(i2);
+        
+        cassert((BigCub(1) == BigCub(2)) == (1 == 2));
+        cassert((BigCub(454545454545454) == BigCub(454545454545454)) == (454545454545454 == 454545454545454));
         
         cassert((tmp1 == tmp2) == (i1 == i2));
         cassert((tmp1 != tmp2) == (i1 != i2));
@@ -122,18 +137,22 @@ void bitwiseTests() {
     std::random_device rd;
     intmax_t it;
     
-    for (intmax_t i = 0; i < LLONG_MAX; ++i) {
-        it = rd();
-        
-        cassert((BigCub(i) & BigCub(it)) == (i & it));
-        cassert((BigCub(i) | BigCub(it)) == (i | it));
-        cassert((BigCub(i) ^ BigCub(it)) == (i ^ it));
-        
-        //cassert(BigCub(it) << (static_cast<uintmax_t>(i) % 50) == static_cast<int32_t>(it) << (i % 50));
-        //cassert(BigCub(it) >> (static_cast<uintmax_t>(i) % 50) == static_cast<int32_t>(it) >> (i % 50));
-        
-        cassert(~BigCub(i) == ~i); // Can only use this if i is signed
-    }
+    std::cout << "Starting range bitwise tests" << std::endl;
+    
+//    for (intmax_t i = 0; i < LLONG_MAX; ++i) {
+//        it = rd();
+//        
+//        cassert((BigCub(i) & BigCub(it)) == (i & it));
+//        cassert((BigCub(i) | BigCub(it)) == (i | it));
+//        cassert((BigCub(i) ^ BigCub(it)) == (i ^ it));
+//        
+//        //cassert(BigCub(it) << (static_cast<uintmax_t>(i) % 50) == static_cast<int32_t>(it) << (i % 50));
+//        //cassert(BigCub(it) >> (static_cast<uintmax_t>(i) % 50) == static_cast<int32_t>(it) >> (i % 50));
+//        
+//        cassert(~BigCub(i) == ~i); // Can only use this if i is signed
+//    }
+    
+    std::cout << "Starting random bitwise tests" << std::endl;
     
     intmax_t it2;
     
@@ -152,68 +171,41 @@ void bitwiseTests() {
     }
 }
 
-//#define printBits(x) std::cout << "Printing " << #x << ": "; printBits2(x);
-//template<typename T>
-//void printBits2(T n) {
-//    for (size_t i = 0; i < sizeof(T) * CHAR_BIT; ++i) {
-//        std::cout << ((n >> i) & 1);
-//    }
-//    
-//    std::cout << std::endl;
-//}
+#define printBits(x) std::cout << "Printing " << #x << ": "; printBits2(x);
+template<typename T>
+void printBits2(T n) {
+    for (size_t i = 0; i < sizeof(T) * CHAR_BIT; ++i) {
+        std::cout << ((n >> i) & 1);
+    }
+    
+    std::cout << std::endl;
+}
 
 int main() {
     //initTests();
-    //arithTests();
-    //cmpTests();
-    //bitwiseTests();
+    arithTests();
+    cmpTests();
+    bitwiseTests();
     
-    BigCub sum(0);
+//    BigCub a(2);
+//    BigCub b(-8);
+//    
+//    BigCub c = (a * b);
+//    std::cout << c << std::endl;
+//    std::cout << c.size() << std::endl;
     
-    for (size_t i = 0; i < 50000100; ++i) {
-        sum += ULLONG_MAX;
-    }
+//    BigCub sum(0);
+//    
+//    for (size_t i = 0; i < 5000010; ++i) {
+//        sum += ULLONG_MAX;
+//    }
+//    
+//    std::cout << sum.size() << std::endl;
     
-    std::cout << sum.size() << std::endl;
-    
-//    printBits(54565544 << 0);
-//    printBits(54565544 << 1);
-//    printBits(54565544 << 2);
-//    printBits(54565544 << 3);
-//    printBits(54565544 << 4);
-//    printBits(54565544 << 5);
-//    printBits(54565544 << 6);
-//    printBits(54565544 << 7);
-//    printBits(54565544 << 8);
-//    printBits(54565544 << 9);
-//    printBits(54565544 << 10);
-//    printBits(54565544 << 11);
-//    printBits(54565544 << 12);
-//    printBits(54565544 << 13);
-//    printBits(54565544 << 14);
-//    printBits(54565544 << 15);
-//    printBits(54565544 << 16);
-//    printBits(54565544 << 17);
-//    printBits(54565544 << 18);
-//    printBits(54565544 << 19);
-//    printBits(54565544 << 20);
-//    printBits(54565544 << 21);
-//    printBits(54565544 << 22);
-//    printBits(54565544 << 23);
-//    printBits(54565544 << 24);
-//    printBits(54565544 << 25);
-//    printBits(54565544 << 26);
-//    printBits(54565544 << 27);
-//    printBits(54565544 << 28);
-//    printBits(54565544 << 29);
-//    printBits(54565544 << 30);
-//    printBits(54565544 << 31);
-//    printBits(54565544 << 32);
-//    printBits(54565544 << 33);
-//    printBits(54565544 << -1);
-    
-
-    
+//    int a = 1;
+//    printBits(a);
+//    printBits(a >> 1);
+//    printBits((BigCub(a) >> 1));
     return 0;
 }
 

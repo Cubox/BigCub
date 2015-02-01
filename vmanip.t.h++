@@ -31,7 +31,6 @@ vmanip::Type vmanip::intImport(T const &n) {
         toReturn[i] = false;          // signed form.
     }
     
-    compress(toReturn);
     return toReturn;
 }
 
@@ -57,15 +56,13 @@ T vmanip::intExport(Type const &n) {
 
 template<class BinaryOperation>
 void vmanip::transform(Type a, Type b, Type &dest, BinaryOperation op) {
-    extend(a, b);
+    normalize(a, b);
     
     dest.resize(a.size());
     
     for (size_type i = 0; i < dest.size(); ++i) {
         dest[i] = op(a[i], b[i]);
     }
-    
-    compress(dest);
 }
 
 template<class UnaryOperation>

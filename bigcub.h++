@@ -39,7 +39,7 @@ public:
     
     ~BigCub();
     
-    // Internal data access related operators
+    // Internal data access related operators and functions
     
     Type::reference operator[](size_type n);
     Type::const_reference const operator[](size_type n) const;
@@ -48,22 +48,25 @@ public:
     Type &operator*();
     Type const &operator*() const;
     size_type size() const;
+    void compress();
     
     // Assignation operators
     
     BigCub &operator=(BigCub const &n);
     BigCub &operator+=(BigCub const &n);
     BigCub &operator-=(BigCub const &n);
+    BigCub &operator*=(BigCub const &n);
     BigCub &operator&=(BigCub const &n);
     BigCub &operator|=(BigCub const &n);
     BigCub &operator^=(BigCub const &n);
-    BigCub &operator<<=(size_type const &n);
-    BigCub &operator>>=(size_type const &n);
+    BigCub &operator<<=(size_type const n);
+    BigCub &operator>>=(size_type const n);
     
     // Arithmetic operators
     
     BigCub operator+(BigCub const &n) const;
     BigCub operator-(BigCub const &n) const;
+    BigCub operator*(BigCub const &n) const;
     BigCub operator-() const;
     BigCub &operator++();
     BigCub operator++(int);
@@ -84,8 +87,8 @@ public:
     BigCub operator&(BigCub const &n) const;
     BigCub operator|(BigCub const &n) const;
     BigCub operator^(BigCub const &n) const;
-    BigCub operator<<(size_type const &n) const;
-    BigCub operator>>(size_type const &n) const;
+    BigCub operator<<(size_type const n) const;
+    BigCub operator>>(size_type const n) const;
     BigCub operator~() const;
     
     // Templated assignation operators
@@ -93,6 +96,7 @@ public:
     template<typename T, typename = IntOnly<T>> BigCub &operator=(T const &n);
     template<typename T, typename = IntOnly<T>> BigCub &operator+=(T const &n);
     template<typename T, typename = IntOnly<T>> BigCub &operator-=(T const &n);
+    template<typename T, typename = IntOnly<T>> BigCub &operator*=(T const &n);
     template<typename T, typename = IntOnly<T>> BigCub &operator&=(T const &n);
     template<typename T, typename = IntOnly<T>> BigCub &operator|=(T const &n);
     template<typename T, typename = IntOnly<T>> BigCub &operator^=(T const &n);
@@ -101,6 +105,7 @@ public:
     
     template<typename T, typename = IntOnly<T>> BigCub operator+(T const &n) const;
     template<typename T, typename = IntOnly<T>> BigCub operator-(T const &n) const;
+    template<typename T, typename = IntOnly<T>> BigCub operator*(T const &n) const;
     
     
     // Templated comparaison operators
@@ -120,7 +125,7 @@ public:
     
     // Templated cast operator
     
-    template<typename T, typename = IntOnly<T>> operator T() const;
+    template<typename T, typename = IntOnly<T>> explicit operator T() const;
     
 protected:
     Type data;
