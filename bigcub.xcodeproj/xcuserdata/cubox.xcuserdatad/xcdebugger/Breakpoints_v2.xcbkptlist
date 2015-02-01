@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tests.c++"
-            timestampString = "444260433.428695"
+            timestampString = "444442080.719951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "bitwiseTests()"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "cmpTests()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,100 +25,46 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "vmanip.t.h++"
-            timestampString = "444274765.67817"
+            filePath = "vmanip.c++"
+            timestampString = "444441718.809175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "vmanip::transform(Type a, Type b, Type &amp;dest, BinaryOperation op)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "vmanip::compare(Type a, Type b)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "void vmanip::transform&lt;std::__1::bit_xor&lt;bool&gt; &gt;(std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;&amp;, std::__1::bit_xor&lt;bool&gt;)"
-                  moduleName = "tests"
-                  urlString = "file:///Users/cubox/Documents/Prog/C++/bigcub/vmanip.t.h++"
-                  timestampString = "444261390.150716"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "1073">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "void vmanip::transform&lt;std::__1::bit_or&lt;bool&gt; &gt;(std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;&amp;, std::__1::bit_or&lt;bool&gt;)"
-                  moduleName = "tests"
-                  urlString = "file:///Users/cubox/Documents/Prog/C++/bigcub/vmanip.t.h++"
-                  timestampString = "444261390.151052"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "1073">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "void vmanip::transform&lt;std::__1::bit_and&lt;bool&gt; &gt;(std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;&amp;, std::__1::bit_and&lt;bool&gt;)"
-                  moduleName = "tests"
-                  urlString = "file:///Users/cubox/Documents/Prog/C++/bigcub/vmanip.t.h++"
-                  timestampString = "444261390.151371"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "1073">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "void vmanip::transform&lt;std::__1::bit_and&lt;bool&gt; &gt;(std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;&amp;, std::__1::bit_and&lt;bool&gt;)"
-                  moduleName = "libbigcub.dylib"
-                  urlString = "file:///Users/cubox/Documents/Prog/C++/bigcub/vmanip.t.h++"
-                  timestampString = "444261390.198003"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "1073">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "void vmanip::transform&lt;std::__1::bit_or&lt;bool&gt; &gt;(std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;&amp;, std::__1::bit_or&lt;bool&gt;)"
-                  moduleName = "libbigcub.dylib"
-                  urlString = "file:///Users/cubox/Documents/Prog/C++/bigcub/vmanip.t.h++"
-                  timestampString = "444261390.198436"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "1073">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "void vmanip::transform&lt;std::__1::bit_xor&lt;bool&gt; &gt;(std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;, std::__1::vector&lt;bool, std::__1::allocator&lt;bool&gt; &gt;&amp;, std::__1::bit_xor&lt;bool&gt;)"
-                  moduleName = "libbigcub.dylib"
-                  urlString = "file:///Users/cubox/Documents/Prog/C++/bigcub/vmanip.t.h++"
-                  timestampString = "444261390.198911"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "1073">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "vmanip.c++"
+            timestampString = "444442294.053305"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "vmanip::compare(Type a, Type b)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "vmanip.c++"
+            timestampString = "444442294.053305"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "vmanip::compare(Type a, Type b)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -19,7 +19,6 @@ BigCub::BigCub(BigCub const &n) {
 
 BigCub::BigCub(Type const &n) {
     data = std::vector<bool>(n);
-    vmanip::compress(data);
 }
 
 BigCub::BigCub(char const *str) {
@@ -86,11 +85,14 @@ BigCub::size_type BigCub::size() const {
     return data.size();
 }
 
+void BigCub::compress() { // To move to an util package soon
+    vmanip::compress(data, 0);
+}
+
 // Assignation operators
 
 BigCub &BigCub::operator=(BigCub const &n) {
     data = std::vector<bool>(n.data);
-    vmanip::compress(data);
     
     return *this;
 }
@@ -104,6 +106,11 @@ BigCub &BigCub::operator-=(BigCub const &n) {
     Type invertedOther = n.data;
     vmanip::invert(invertedOther);
     vmanip::add(data, invertedOther, data);
+    return *this;
+}
+
+BigCub &BigCub::operator*=(BigCub const &n) {
+    vmanip::mul(data, n.data, data);
     return *this;
 }
 
@@ -122,31 +129,15 @@ BigCub &BigCub::operator^=(BigCub const &n) {
     return *this;
 }
 
-BigCub &BigCub::operator<<=(size_type const &n) {
-    if (n > data.size()) {
-        vmanip::transform(data, [](){return false;});
-    }
-    else {
-        data.erase(data.end() - n, data.end());
-        data.insert(data.begin(), n, false);
-    }
-    
-    vmanip::compress(data);
-    
+BigCub &BigCub::operator<<=(size_type const n) {
+    vmanip::lshift(data, n);
+
     return *this;
 }
 
-BigCub &BigCub::operator>>=(size_type const &n) {
-    if (n > data.size()) {
-        vmanip::transform(data, [this](){return this->data.back();});
-    }
-    else {
-        data.erase(data.end() - n, data.end());
-        data.insert(data.begin(), n, false);
-    }
-    
-    vmanip::compress(data);
-    
+BigCub &BigCub::operator>>=(size_type const n) {
+    vmanip::rshift(data, n);
+
     return *this;
 }
 
@@ -162,6 +153,13 @@ BigCub BigCub::operator+(BigCub const &n) const {
 BigCub BigCub::operator-(BigCub const &n) const {
     BigCub toReturn(*this);
     toReturn -= n;
+    
+    return toReturn;
+}
+
+BigCub BigCub::operator*(BigCub const &n) const {
+    BigCub toReturn(*this);
+    toReturn *= n;
     
     return toReturn;
 }
@@ -249,14 +247,14 @@ BigCub BigCub::operator^(BigCub const &n) const {
     return toReturn;
 }
 
-BigCub BigCub::operator<<(size_type const &n) const {
+BigCub BigCub::operator<<(size_type const n) const {
     BigCub toReturn(*this);
     toReturn <<= n;
     
     return toReturn;
 }
 
-BigCub BigCub::operator>>(size_type const &n) const {
+BigCub BigCub::operator>>(size_type const n) const {
     BigCub toReturn(*this);
     toReturn >>= n;
     
