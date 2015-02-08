@@ -30,8 +30,14 @@ public:
     BigCub(void);
     BigCub(BigCub const &n);
     BigCub(Type const &n);
+    
+#if 0
+    
     BigCub(char const* const str);
     BigCub(std::string const &str);
+    
+#endif // 0
+    
     template<typename T, typename = IntOnly<T>>
     BigCub(T const &n);
     

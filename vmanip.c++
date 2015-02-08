@@ -105,14 +105,24 @@ void vmanip::normalize(Type &a, Type &b /*, bool changeSize /* = true */) {
         compress(b, a.size());
         // }
         
-        a.insert(a.end(), b.size() - a.size(), static_cast<bool>(a.back()));
+        if (a.size() == 0) {
+            a.insert(a.end(), b.size() - a.size(), false);
+        }
+        else {
+            a.insert(a.end(), b.size() - a.size(), static_cast<bool>(a.back()));
+        }
     }
     else if (b.size() < a.size()) {
         // if (changeSize) {
         compress(a, b.size());
         // }
         
-        b.insert(b.end(), a.size() - b.size(), static_cast<bool>(b.back()));
+        if (b.size() == 0) {
+            b.insert(b.end(), a.size() - b.size(), false);
+        }
+        else {
+            b.insert(b.end(), a.size() - b.size(), static_cast<bool>(b.back()));
+        }
     }
     else {
         // if (changeSize) {
@@ -141,14 +151,8 @@ void vmanip::rshift(Type &bits, size_type n) {
     }
 }
 
-// So, this is magic. The commented parts are SUPPOSED to be here
-// but I never found any problem without them
-// wtf
-
 void vmanip::mul(Type m, Type r, Type &P) {
     normalize(m, r);
-    // m.push_back(m.back());
-    // r.push_back(r.back());
     size_type size = m.size();
     
     P = r;
@@ -163,14 +167,15 @@ void vmanip::mul(Type m, Type r, Type &P) {
     
     for (size_type i = 0; i < size; ++i) {
         if (P[0] == true && P[1] == false) {
-            add(P, A, P /*, true */);
+            add(P, A, P);
         }
         else if (P[0] == false && P[1] == true) {
-            add(P, S, P /*, true */);
+            add(P, S, P);
         }
         
         rshift(P, 1);
     }
+    
     P.erase(P.end());
     P.erase(P.begin());
 }

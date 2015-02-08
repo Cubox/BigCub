@@ -32,9 +32,9 @@ namespace vmanip {
     template<class UnaryOperation>
     void transform(Type &dest, UnaryOperation op);
     
-    void add(Type a, Type b, Type &dest /* , bool changeSize = true */);
-    void normalize(Type &a, Type &b /* , bool changeSize = true */);
-    void invert(Type &bits /* , bool changeSize = true */);
+    void add(Type a, Type b, Type &dest);
+    void normalize(Type &a, Type &b);
+    void invert(Type &bits);
     void compress(Type &bits, size_type minSize);
     void compress(Type &a, Type &b);
     void lshift(Type &bits, size_type n);
