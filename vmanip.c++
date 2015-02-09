@@ -9,7 +9,7 @@
 #include <cassert>
 #include "vmanip.h++"
 
-void vmanip::add(Type a, Type b, Type &dest /*, bool changeSize /* = true */) {
+void vmanip::add(Type a, Type b, Type &dest) {
     dest.clear();
     
     if (a.size() == 0) {
@@ -21,7 +21,7 @@ void vmanip::add(Type a, Type b, Type &dest /*, bool changeSize /* = true */) {
         return;
     }
     
-    normalize(a, b /*, changeSize */);
+    normalize(a, b);
     dest.resize(a.size());
     
     size_type i = 0;
@@ -66,7 +66,7 @@ void vmanip::compress(Type &a, Type &b) {
     b.resize(i + 1);
 }
 
-void vmanip::invert(Type &bits /*, bool changeSize /* = true */) {
+void vmanip::invert(Type &bits) {
     if (bits.size() == 0) {
         return;
     }
@@ -99,11 +99,9 @@ int8_t vmanip::compare(Type a, Type b) {
     return 0;
 }
 
-void vmanip::normalize(Type &a, Type &b /*, bool changeSize /* = true */) {
+void vmanip::normalize(Type &a, Type &b) {
     if (a.size() < b.size()) {
-        // if (changeSize) {
         compress(b, a.size());
-        // }
         
         if (a.size() == 0) {
             a.insert(a.end(), b.size() - a.size(), false);
@@ -113,9 +111,7 @@ void vmanip::normalize(Type &a, Type &b /*, bool changeSize /* = true */) {
         }
     }
     else if (b.size() < a.size()) {
-        // if (changeSize) {
         compress(a, b.size());
-        // }
         
         if (b.size() == 0) {
             b.insert(b.end(), a.size() - b.size(), false);
@@ -125,9 +121,7 @@ void vmanip::normalize(Type &a, Type &b /*, bool changeSize /* = true */) {
         }
     }
     else {
-        // if (changeSize) {
         compress(a, b);
-        // }
     }
 }
 
@@ -157,7 +151,7 @@ void vmanip::mul(Type m, Type r, Type &P) {
     
     P = r;
     Type A(m);
-    invert(m /*, true */);
+    invert(m);
     Type S(m);
     
     A.insert(A.begin(), size + 1, false);
