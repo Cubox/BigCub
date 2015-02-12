@@ -10,6 +10,7 @@
 #define vmanip_h
 
 #include <vector>
+#include <cstdint>
 
 #pragma GCC visibility push(default)
 
