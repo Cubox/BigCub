@@ -9,6 +9,7 @@
 #ifndef vmanip_t_h
 #define vmanip_t_h
 
+#include <climits>
 #include "vmanip.h++"
 
 template<typename T, typename>
