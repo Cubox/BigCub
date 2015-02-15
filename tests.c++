@@ -171,15 +171,15 @@ void bitwiseTests() {
     }
 }
 
-#define printBits(x) std::cout << "Printing " << #x << ": "; printBits2(x);
-template<typename T>
-void printBits2(T n) {
-    for (size_t i = 0; i < sizeof(T) * CHAR_BIT; ++i) {
-        std::cout << ((n >> i) & 1);
-    }
-    
-    std::cout << std::endl;
-}
+//#define printBits(x) std::cout << "Printing " << #x << ": "; printBits2(x);
+//template<typename T>
+//void printBits2(T n) {
+//    for (size_t i = 0; i < sizeof(T) * CHAR_BIT; ++i) {
+//        std::cout << ((n >> i) & 1);
+//    }
+//    
+//    std::cout << std::endl;
+//}
 
 int main() {
     //initTests();
