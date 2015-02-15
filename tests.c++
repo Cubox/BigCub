@@ -171,6 +171,15 @@ void bitwiseTests() {
     }
 }
 
+void readTests() {
+    cassert(BigCub("45646545656456456") == 45646545656456456);
+    cassert(BigCub("0") == 0);
+    cassert(BigCub("") == 0);
+    cassert(BigCub("-0") == -0);
+    cassert(BigCub("-1") == -1);
+    cassert(BigCub("1") == 1);
+}
+
 //#define printBits(x) std::cout << "Printing " << #x << ": "; printBits2(x);
 //template<typename T>
 //void printBits2(T n) {
@@ -186,20 +195,21 @@ int main() {
     //arithTests();
     //cmpTests();
     //bitwiseTests();
+    readTests();
     
-    std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-
-    BigCub a;
+//    std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+//
+//    BigCub a;
     
     //(*a).resize(INT_MAX+54554554);
     //a[a.size() - 1] = false;
 
-    std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
-
-    std::cout << "BigCub took " << time_span.count() << " seconds." << std::endl;
-    
-    std::cout << "Value: " << a << std::endl;
+//    std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+//    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
+//
+//    std::cout << "BigCub took " << time_span.count() << " seconds." << std::endl;
+//    
+//    std::cout << "Value: " << a << std::endl;
     
 //    for (auto i = (*a).begin(), e = (*a).end(); i != e; ++i) {
 //        std::cout << *i;
@@ -207,7 +217,7 @@ int main() {
     
     //td::cout << std::endl;
     
-    std::chrono::high_resolution_clock::time_point t5 = std::chrono::high_resolution_clock::now();
+//    std::chrono::high_resolution_clock::time_point t5 = std::chrono::high_resolution_clock::now();
 
 //    mpz_class a3;
 //    for (;mpz_sizeinbase(a3.get_mpz_t(), 2) < 25;) {
@@ -215,10 +225,10 @@ int main() {
 //    }
     
 
-    std::chrono::high_resolution_clock::time_point t6 = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> time_span3 = std::chrono::duration_cast<std::chrono::duration<double>>(t6 - t5);
-
-    std::cout << "libgmp took " << time_span3.count() << " seconds." << std::endl;
+//    std::chrono::high_resolution_clock::time_point t6 = std::chrono::high_resolution_clock::now();
+//    std::chrono::duration<double> time_span3 = std::chrono::duration_cast<std::chrono::duration<double>>(t6 - t5);
+//
+//    std::cout << "libgmp took " << time_span3.count() << " seconds." << std::endl;
 
     
 //    BigCub sum(0);
