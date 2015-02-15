@@ -48,9 +48,9 @@ public:
     // Internal data access related operators and functions
     
     Type::reference operator[](size_type n);
-    Type::const_reference const operator[](size_type n) const;
+    Type::const_reference operator[](size_type n) const;
     Type::reference at(size_type n);
-    Type::const_reference const at(size_type n) const;
+    Type::const_reference at(size_type n) const;
     Type &operator*();
     Type const &operator*() const;
     size_type size() const;

@@ -70,7 +70,7 @@ BigCub::Type::reference BigCub::operator[](size_type n) {
     return data[n];
 }
 
-BigCub::Type::const_reference const BigCub::operator[](size_type n) const {
+BigCub::Type::const_reference BigCub::operator[](size_type n) const {
     return data[n];
 }
 
@@ -78,7 +78,7 @@ BigCub::Type::reference BigCub::at(size_type n) {
     return data.at(n);
 }
 
-BigCub::Type::const_reference const BigCub::at(size_type n) const {
+BigCub::Type::const_reference BigCub::at(size_type n) const {
     return data.at(n);
 }
 
