@@ -43,7 +43,7 @@ BigCub &BigCub::operator-=(T const &n) {
 
 template<typename T, typename>
 BigCub &BigCub::operator*=(T const &n) {
-    vmanip::mul(data, vmanip::intImport(-n), data);
+    vmanip::mul(data, vmanip::intImport(n), data);
     
     return *this;
 }
