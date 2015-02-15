@@ -191,10 +191,10 @@ void readTests() {
 //}
 
 int main() {
-    //initTests();
-    //arithTests();
-    //cmpTests();
-    //bitwiseTests();
+    initTests();
+    arithTests();
+    cmpTests();
+    bitwiseTests();
     readTests();
     
 //    std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();

@@ -9,9 +9,9 @@
 #include <cassert>
 #include "vmanip.h++"
 
+// Takes the two numbers a and b, performs an addition
+
 void vmanip::add(Type a, Type b, Type &dest) {
-    dest.clear();
-    
     if (a.size() == 0) {
         dest = b;
         return;
@@ -21,7 +21,8 @@ void vmanip::add(Type a, Type b, Type &dest) {
         return;
     }
     
-    normalize(a, b);
+    normalize(a, b); // We need to adjust a and b to the same size.
+    dest.clear();
     dest.resize(a.size());
     
     size_type i = 0;
@@ -31,17 +32,19 @@ void vmanip::add(Type a, Type b, Type &dest) {
     }
     --i;
     
-    if (~(a[i] ^ b[i]) & (a[i] ^ dest[i])) {
+    if (~(a[i] ^ b[i]) & (a[i] ^ dest[i])) { // if overflow.
         dest.push_back(a[i]);
     }
 }
+
+// Remove "useless" bits from the number.
 
 void vmanip::compress(Type &bits, size_type minSize) {
     if (bits.size() < 2 || bits.size() <= minSize) {
         return;
     }
     
-    if (minSize < 2) {
+    if (minSize < 2) { // We need at least two bits to represent a number
         minSize = 2;
     }
     
@@ -50,6 +53,8 @@ void vmanip::compress(Type &bits, size_type minSize) {
     
     bits.resize(i + 1);
 }
+
+// Remove useless bits from a and b, while keeping them of the same size.
 
 void vmanip::compress(Type &a, Type &b) {
     assert(a.size() == b.size());
@@ -66,15 +71,22 @@ void vmanip::compress(Type &a, Type &b) {
     b.resize(i + 1);
 }
 
+// Calculates the additive inverse of the input number
+// Can be represented as output = -input
+// We flip all the bits in the number, and then add one to it.
+
 void vmanip::invert(Type &bits) {
     if (bits.size() == 0) {
         return;
     }
     
     bits.flip();
-    Type one = {true, false};
-    add(bits, one, bits /*, changeSize */);
+    add(bits, {true, false}, bits);
 }
+
+// Returns 1 if a is greater than b
+// -1 if b is greater than a
+// and 0 if they are identical
 
 int8_t vmanip::compare(Type a, Type b) {
     normalize(a, b);
@@ -98,6 +110,8 @@ int8_t vmanip::compare(Type a, Type b) {
     
     return 0;
 }
+
+// Take the two input numbers, compress them if applicable, or extend if needed.
 
 void vmanip::normalize(Type &a, Type &b) {
     if (a.size() < b.size()) {
@@ -144,6 +158,8 @@ void vmanip::rshift(Type &bits, size_type n) {
         bits.insert(bits.end() - static_cast<Type::difference_type>(n), n, static_cast<bool>(bits.back()));
     }
 }
+
+// Booth's multiplication algorithm.
 
 void vmanip::mul(Type m, Type r, Type &P) {
     normalize(m, r);

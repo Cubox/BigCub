@@ -85,7 +85,7 @@ BigCub::size_type BigCub::size() const {
     return data.size();
 }
 
-void BigCub::compress() { // To move to an util package soon
+void BigCub::compress() {
     vmanip::compress(data, 0);
 }
 
@@ -99,6 +99,7 @@ BigCub &BigCub::operator=(BigCub const &n) {
 
 BigCub &BigCub::operator+=(BigCub const &n) {
     vmanip::add(data, n.data, data);
+    
     return *this;
 }
 
@@ -106,26 +107,31 @@ BigCub &BigCub::operator-=(BigCub const &n) {
     Type invertedOther = n.data;
     vmanip::invert(invertedOther);
     vmanip::add(data, invertedOther, data);
+    
     return *this;
 }
 
 BigCub &BigCub::operator*=(BigCub const &n) {
     vmanip::mul(data, n.data, data);
+    
     return *this;
 }
 
 BigCub &BigCub::operator&=(BigCub const &n) {
     vmanip::transform(data, n.data, data, std::bit_and<bool>());
+    
     return *this;
 }
 
 BigCub &BigCub::operator|=(BigCub const &n) {
     vmanip::transform(data, n.data, data, std::bit_or<bool>());
+    
     return *this;
 }
 
 BigCub &BigCub::operator^=(BigCub const &n) {
    vmanip::transform(data, n.data, data, std::bit_xor<bool>());
+    
     return *this;
 }
 
@@ -172,8 +178,7 @@ BigCub BigCub::operator-() const {
 }
 
 BigCub &BigCub::operator++() {
-    Type one = {true, false};
-    vmanip::add(data, one, data);
+    vmanip::add(data, {true, false}, data);
     
     return *this;
 }
@@ -230,6 +235,7 @@ bool BigCub::operator>=(BigCub const &n) const {
 BigCub BigCub::operator&(BigCub const &n) const {
     BigCub toReturn(*this);
     toReturn &= n;
+    
     return toReturn;
 }
 
