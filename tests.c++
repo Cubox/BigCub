@@ -137,7 +137,7 @@ void bitwiseTests() {
     std::random_device rd;
     intmax_t it;
     
-    std::cout << "Starting range bitwise tests" << std::endl;
+    // std::cout << "Starting range bitwise tests" << std::endl;
     
 //    for (intmax_t i = 0; i < LLONG_MAX; ++i) {
 //        it = rd();
@@ -160,9 +160,9 @@ void bitwiseTests() {
         it = rd();
         it2 = -rd();
         
-        cassert(BigCub(it2) & BigCub(it) == it2 & it);
-        cassert(BigCub(it2) | BigCub(it) == it2 | it);
-        cassert(BigCub(it2) ^ BigCub(it) == it2 ^ it);
+        cassert((BigCub(it2) & BigCub(it)) == (it2 & it));
+        cassert((BigCub(it2) | BigCub(it)) == (it2 | it));
+        cassert((BigCub(it2) ^ BigCub(it)) == (it2 ^ it));
         
         //cassert(BigCub(it) << i % 50 == it << i % 50);
         //cassert(BigCub(it) >> i % 50 == it >> i % 50);
@@ -191,11 +191,11 @@ void readTests() {
 //}
 
 int main() {
-    initTests();
+    //initTests();
     arithTests();
     cmpTests();
     bitwiseTests();
-    readTests();
+    //readTests();
     
 //    std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 //
