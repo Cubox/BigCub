@@ -13,6 +13,8 @@
 
 #include "vmanip.h++"
 
+// Convert an integer into a Type of the same value
+
 template<typename T, typename>
 vmanip::Type vmanip::intImport(T const &n) {
     Type toReturn;
@@ -36,6 +38,9 @@ vmanip::Type vmanip::intImport(T const &n) {
     return toReturn;
 }
 
+// Convert a Type to an integer of the same value.
+// The required integer is specified via the template parameter
+
 template<typename T, typename>
 T vmanip::intExport(Type const &n) {
     T toReturn = 0;
@@ -49,12 +54,15 @@ T vmanip::intExport(Type const &n) {
         toReturn |= (static_cast<T>(n[i]) << i);
     }
     
+    // if the number is negative, fill the remaining bits to one
     for (; n.back() == true && i < sizeof(T) * CHAR_BIT; ++i) {
         toReturn |= (static_cast<T>(n.back()) << i);
     }
     
     return toReturn;
 }
+
+// Apply the passed function to each bits in a and b
 
 template<class BinaryOperation>
 void vmanip::transform(Type a, Type b, Type &dest, BinaryOperation op) {
@@ -66,6 +74,8 @@ void vmanip::transform(Type a, Type b, Type &dest, BinaryOperation op) {
         dest[i] = op(a[i], b[i]);
     }
 }
+
+// Apply the passed function to each bits in dest
 
 template<class UnaryOperation>
 void vmanip::transform(Type &dest, UnaryOperation op) {

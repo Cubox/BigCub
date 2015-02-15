@@ -30,13 +30,8 @@ public:
     BigCub(void);
     BigCub(BigCub const &n);
     BigCub(Type const &n);
-    
-#if 0
-    
     BigCub(char const* const str);
     BigCub(std::string const &str);
-    
-#endif // 0
     
     template<typename T, typename = IntOnly<T>>
     BigCub(T const &n);
@@ -48,9 +43,9 @@ public:
     // Internal data access related operators and functions
     
     Type::reference operator[](size_type n);
-    Type::const_reference const operator[](size_type n) const;
+    Type::const_reference operator[](size_type n) const;
     Type::reference at(size_type n);
-    Type::const_reference const at(size_type n) const;
+    Type::const_reference at(size_type n) const;
     Type &operator*();
     Type const &operator*() const;
     size_type size() const;

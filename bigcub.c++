@@ -21,28 +21,21 @@ BigCub::BigCub(Type const &n) {
     data = std::vector<bool>(n);
 }
 
-#if 0
-
-// This function is a work in progress
-// We need the multiplication operator here
-// TODO:
-
 BigCub::BigCub(char const *str) {
    if (str == NULL || str[0] == '\0') {
        return;
    }
    
    bool negative = false;
-   
    if (str[0] == '-') {
        negative = true;
    }
    
    size_t strSize = std::strlen(str);
-   str = str + (strSize - 1);
-   for (size_t i = 1; i <= strSize; ++i, --str) {
-       if (std::isdigit(*str)) { // FIXME: oh god this is horrible pls fix
-           *this += (*str - '0') * static_cast<uintmax_t>(std::pow(10, i - 1));
+   for (size_t i = 0; i < strSize; ++i) {
+       if (std::isdigit(str[i])) {
+           *this *= 10;
+           *this += str[i] - '0';
        }
 	}
    
@@ -56,8 +49,6 @@ BigCub::BigCub(std::string const &str) : BigCub(str.c_str()) {
     
 }
 
-#endif // 0
-
 // Destructor
 
 BigCub::~BigCub() {
@@ -70,7 +61,7 @@ BigCub::Type::reference BigCub::operator[](size_type n) {
     return data[n];
 }
 
-BigCub::Type::const_reference const BigCub::operator[](size_type n) const {
+BigCub::Type::const_reference BigCub::operator[](size_type n) const {
     return data[n];
 }
 
@@ -78,7 +69,7 @@ BigCub::Type::reference BigCub::at(size_type n) {
     return data.at(n);
 }
 
-BigCub::Type::const_reference const BigCub::at(size_type n) const {
+BigCub::Type::const_reference BigCub::at(size_type n) const {
     return data.at(n);
 }
 
@@ -94,7 +85,7 @@ BigCub::size_type BigCub::size() const {
     return data.size();
 }
 
-void BigCub::compress() { // To move to an util package soon
+void BigCub::compress() {
     vmanip::compress(data, 0);
 }
 
@@ -108,6 +99,7 @@ BigCub &BigCub::operator=(BigCub const &n) {
 
 BigCub &BigCub::operator+=(BigCub const &n) {
     vmanip::add(data, n.data, data);
+    
     return *this;
 }
 
@@ -115,26 +107,31 @@ BigCub &BigCub::operator-=(BigCub const &n) {
     Type invertedOther = n.data;
     vmanip::invert(invertedOther);
     vmanip::add(data, invertedOther, data);
+    
     return *this;
 }
 
 BigCub &BigCub::operator*=(BigCub const &n) {
     vmanip::mul(data, n.data, data);
+    
     return *this;
 }
 
 BigCub &BigCub::operator&=(BigCub const &n) {
     vmanip::transform(data, n.data, data, std::bit_and<bool>());
+    
     return *this;
 }
 
 BigCub &BigCub::operator|=(BigCub const &n) {
     vmanip::transform(data, n.data, data, std::bit_or<bool>());
+    
     return *this;
 }
 
 BigCub &BigCub::operator^=(BigCub const &n) {
    vmanip::transform(data, n.data, data, std::bit_xor<bool>());
+    
     return *this;
 }
 
@@ -181,8 +178,7 @@ BigCub BigCub::operator-() const {
 }
 
 BigCub &BigCub::operator++() {
-    Type one = {true, false};
-    vmanip::add(data, one, data);
+    vmanip::add(data, {true, false}, data);
     
     return *this;
 }
@@ -239,6 +235,7 @@ bool BigCub::operator>=(BigCub const &n) const {
 BigCub BigCub::operator&(BigCub const &n) const {
     BigCub toReturn(*this);
     toReturn &= n;
+    
     return toReturn;
 }
 
