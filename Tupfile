@@ -1,0 +1,6 @@
+CXX = clang++
+CXXFLAGS = -Ofast -flto -I. -std=c++1y
+BIN = tests
+
+: foreach *.c++ |> $(CXX) $(CXXFLAGS) -c %f -o %o |> %B.o
+: *.o |> $(CXX) %f -o %o |> $(BIN)

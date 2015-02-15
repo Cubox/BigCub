@@ -8,7 +8,15 @@ Probably missing some logic operators. vOv
 
 ## How to build it?
 
-You may need C++14, and clang. Just do clang++ -Ofast -std=c++1y \*.c++ -I. to have the tests compiled.
+You need Tup installed.
+You need clang, with C++14 support.
+
+```shell
+$ $(package manager) install tup
+$ tup init
+$ tup
+$ ./tests
+```
 
 ## Why? How?
 
