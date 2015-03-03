@@ -9,16 +9,12 @@
 
 // Constructors
 
-BigCub::BigCub(void) {
-    
-}
-
-BigCub::BigCub(BigCub const &n) {
-    *this = n;
-}
-
 BigCub::BigCub(Type const &n) {
     data = std::vector<bool>(n);
+}
+
+BigCub::BigCub(Type &&n) {
+    data = n;
 }
 
 BigCub::BigCub(char const *str) {
@@ -90,12 +86,6 @@ void BigCub::compress() {
 }
 
 // Assignation operators
-
-BigCub &BigCub::operator=(BigCub const &n) {
-    data = std::vector<bool>(n.data);
-    
-    return *this;
-}
 
 BigCub &BigCub::operator+=(BigCub const &n) {
     vmanip::add(data, n.data, data);

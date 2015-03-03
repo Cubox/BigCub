@@ -27,9 +27,11 @@ public:
     
     // Constructors
     
-    BigCub(void);
-    BigCub(BigCub const &n);
+    BigCub() = default;
+    BigCub(BigCub const &n) = default;
+    BigCub(BigCub &&n) = default;
     BigCub(Type const &n);
+    BigCub(Type &&n);
     BigCub(char const* const str);
     BigCub(std::string const &str);
     
@@ -53,7 +55,8 @@ public:
     
     // Assignation operators
     
-    BigCub &operator=(BigCub const &n);
+    BigCub &operator=(BigCub const &n) = default;
+    BigCub &operator=(BigCub &&n) = default;
     BigCub &operator+=(BigCub const &n);
     BigCub &operator-=(BigCub const &n);
     BigCub &operator*=(BigCub const &n);
