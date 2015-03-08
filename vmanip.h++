@@ -11,12 +11,13 @@
 
 #include <vector>
 #include <cstdint>
+#include <deque>
 
-#pragma GCC visibility push(default)
+#include "bitset.h++"
 
 namespace vmanip {
-    typedef std::vector<bool> Type;
-    typedef Type::size_type size_type;
+    using Type = Bitset<>;
+    using size_type = Type::size_type;
     
     template<typename T>
     using IntOnly = typename std::enable_if<std::is_integral<T>::value>::type;
@@ -36,7 +37,7 @@ namespace vmanip {
     void add(Type a, Type b, Type &dest);
     void normalize(Type &a, Type &b);
     void invert(Type &bits);
-    void compress(Type &bits, size_type minSize);
+    void compress(Type &bits, size_type minSize = 0);
     void compress(Type &a, Type &b);
     void lshift(Type &bits, size_type n);
     void rshift(Type &bits, size_type n);
@@ -46,5 +47,4 @@ namespace vmanip {
 
 #include "vmanip.t.h++"
 
-#pragma GCC visibility pop
 #endif

@@ -19,12 +19,7 @@ template<typename T, typename>
 vmanip::Type vmanip::intImport(T const &n) {
     Type toReturn;
     
-    if (std::is_unsigned<T>::value) { // Unsigned, see lower
-        toReturn.resize((sizeof(n) * CHAR_BIT) + 1);
-    }
-    else {
-        toReturn.resize(sizeof(n) * CHAR_BIT);
-    }
+    toReturn.resize(sizeof(n) * CHAR_BIT);
     
     size_type i = 0;
     for (; i < sizeof(n) * CHAR_BIT; ++i) {
@@ -32,7 +27,7 @@ vmanip::Type vmanip::intImport(T const &n) {
     }
     
     if (std::is_unsigned<T>::value) { // If unsigned, we need to convert into
-        toReturn[i] = false;          // signed form.
+        toReturn.push_back(false);    // signed form.
     }
     
     return toReturn;
@@ -79,7 +74,7 @@ void vmanip::transform(Type a, Type b, Type &dest, BinaryOperation op) {
 
 template<class UnaryOperation>
 void vmanip::transform(Type &dest, UnaryOperation op) {
-    for (auto i : dest) {
+    for (size_type i = 0; i < dest.size(); ++i) {
         dest[i] = op();
     }
 }

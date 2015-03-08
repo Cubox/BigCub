@@ -10,16 +10,16 @@
 #ifndef bigcub_h
 #define bigcub_h
 
-#include <vector>
 #include <string>
 #include <ostream>
-#include "vmanip.h++"
+
+#include "bitset.h++"
 
 #pragma GCC visibility push(default)
 
 class BigCub {
 public:
-    using Type = vmanip::Type;
+    using Type = vmanip::Bitset<>;
     using size_type = Type::size_type;
     
     template<typename T>
@@ -27,9 +27,9 @@ public:
     
     // Constructors
     
-    BigCub() = default;
-    BigCub(BigCub const &n) = default;
-    BigCub(BigCub &&n) = default;
+    BigCub();
+    BigCub(BigCub const &n);
+    BigCub(BigCub &&n);
     BigCub(Type const &n);
     BigCub(Type &&n);
     BigCub(char const* const str);
@@ -46,8 +46,6 @@ public:
     
     Type::reference operator[](size_type n);
     Type::const_reference operator[](size_type n) const;
-    Type::reference at(size_type n);
-    Type::const_reference at(size_type n) const;
     Type &operator*();
     Type const &operator*() const;
     size_type size() const;
@@ -55,8 +53,8 @@ public:
     
     // Assignation operators
     
-    BigCub &operator=(BigCub const &n) = default;
-    BigCub &operator=(BigCub &&n) = default;
+    BigCub &operator=(BigCub const &n);
+    BigCub &operator=(BigCub &&n);
     BigCub &operator+=(BigCub const &n);
     BigCub &operator-=(BigCub const &n);
     BigCub &operator*=(BigCub const &n);

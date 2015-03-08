@@ -12,6 +12,8 @@
 #include <random>
 #include <cstdint>
 #include <chrono>
+#include <ctime>
+#include <iomanip>
 //#include <gmpxx.h>
 #include <bigcub.h++>
 
@@ -45,9 +47,9 @@ void arithTests() {
 //        cassert(static_cast<int32_t>(--tmp1) == static_cast<int32_t>(--i));
 //        cassert(static_cast<int32_t>(-tmp1) == static_cast<int32_t>(-i));
 //        
-//        cassert(static_cast<int32_t>(BigCub(i) * BigCub(i)) == static_cast<int32_t>(i * i));
+//        //cassert(static_cast<int32_t>(BigCub(i) * BigCub(i)) == static_cast<int32_t>(i * i));
 //        
-//        cassert(static_cast<int32_t>(BigCub(i) * BigCub(-i)) == static_cast<int32_t>(i * -i));
+//        //cassert(static_cast<int32_t>(BigCub(i) * BigCub(-i)) == static_cast<int32_t>(i * -i));
 //    }
     
     std::random_device rd;
@@ -82,7 +84,7 @@ void arithTests() {
         cassert(static_cast<int64_t>(--BigCub(i1)) == --i1);
         
         cassert(static_cast<int64_t>(++BigCub(i2)) == ++i2);
-        cassert(static_cast<int64_t>(--BigCub(i2)) == --i2);
+        cassert(static_cast<int64_t>(--BigCub(i2)) == --i2); 
 
         cassert(static_cast<int64_t>(BigCub(i1) * BigCub(i2)) == static_cast<int64_t>(i1 * i2));
     }
@@ -137,8 +139,8 @@ void bitwiseTests() {
     std::random_device rd;
     intmax_t it;
     
-    // std::cout << "Starting range bitwise tests" << std::endl;
-    
+//     std::cout << "Starting range bitwise tests" << std::endl;
+//    
 //    for (intmax_t i = 0; i < LLONG_MAX; ++i) {
 //        it = rd();
 //        
@@ -191,11 +193,70 @@ void readTests() {
 //}
 
 int main() {
-    //initTests();
-    arithTests();
-    cmpTests();
-    bitwiseTests();
-    //readTests();
+
+//    BigCub a(-8);
+//    
+//    BigCub b(2);
+//    
+//    std::cout << a * b << std::endl;
+    
+    //std::cout << sizeof(intmax_t) << std::endl;
+    
+//    intmax_t i1 = 122222244233323;
+//    intmax_t i2 = 999999999999999;
+//    
+//    BigCub b1(i1);
+//    BigCub b2(i2);
+//    
+//    std::cout << b1 << std::endl;
+//    std::cout << b2 << std::endl;
+    
+//    std::cout << i1 << std::endl;
+//    std::cout << i2 << std::endl;
+    
+    //std::cout << (-b1) << std::endl;
+//    -b1;
+//    std::cout << ((-b1) + b2) << std::endl;
+    
+//    std::cout << -i1 << std::endl;
+//    std::cout << (-i1) + (i2) << std::endl;
+    
+//    BigCub a(1);
+//    BigCub b(1);
+//    
+//    BigCub c = a + b;
+//    
+//    std::cout << c << std::endl;
+    
+   // initTests();
+//    arithTests();
+//   cmpTests();
+//   bitwiseTests();
+//    readTests();
+    
+    BigCub a(2);
+    std::time_t time;
+    std::tm tm;
+    
+    while (1) {
+        a *= a;
+        time = std::time(nullptr);
+        tm = *std::localtime(&time);
+        std::cout << std::put_time(&tm, "%c") << ": " << a.size() << std::endl;
+    }
+
+    
+//    vmanip::Type a;
+//    
+//    a = {true, false, true, false, true, false, true, false, true, false, true};
+//    
+//    BigCub b(a);
+//    
+//    std::cout << b << std::endl;
+//    
+//    --b;
+//    
+//    std::cout << b << std::endl;
     
 //    std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 //

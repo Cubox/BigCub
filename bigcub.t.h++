@@ -10,6 +10,7 @@
 #define bigcub_t_h
 
 #include "bigcub.h++"
+#include "vmanip.h++"
 
 // Templated constructor
 

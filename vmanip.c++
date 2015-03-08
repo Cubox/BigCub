@@ -118,20 +118,20 @@ void vmanip::normalize(Type &a, Type &b) {
         compress(b, a.size());
         
         if (a.size() == 0) {
-            a.insert(a.end(), b.size() - a.size(), false);
+            a.push_back(b.size() - a.size(), false);
         }
         else {
-            a.insert(a.end(), b.size() - a.size(), static_cast<bool>(a.back()));
+            a.push_back(b.size() - a.size(), static_cast<bool>(a.back()));
         }
     }
     else if (b.size() < a.size()) {
         compress(a, b.size());
         
         if (b.size() == 0) {
-            b.insert(b.end(), a.size() - b.size(), false);
+            b.push_back(a.size() - b.size(), false);
         }
         else {
-            b.insert(b.end(), a.size() - b.size(), static_cast<bool>(b.back()));
+            b.push_back(a.size() - b.size(), static_cast<bool>(b.back()));
         }
     }
     else {
@@ -144,8 +144,8 @@ void vmanip::lshift(Type &bits, size_type n) {
         transform(bits, [](){return false;});
     }
     else {
-        bits.erase(bits.end() - static_cast<Type::difference_type>(n), bits.end());
-        bits.insert(bits.begin(), n, false);
+        bits.pop_back(n);
+        bits.push_front(n, false);
     }
 }
 
@@ -154,28 +154,28 @@ void vmanip::rshift(Type &bits, size_type n) {
         vmanip::transform(bits, [&bits](){return bits.back();});
     }
     else {
-        bits.erase(bits.begin(), bits.begin() + static_cast<Type::difference_type>(n));
-        bits.insert(bits.end() - static_cast<Type::difference_type>(n), n, static_cast<bool>(bits.back()));
+        bits.pop_front(n);
+        bits.push_back(n, bits.back());
     }
 }
 
 // Booth's multiplication algorithm.
 
 void vmanip::mul(Type m, Type r, Type &P) {
-    normalize(m, r);
-    size_type size = m.size();
+    compress(m);
+    compress(r);
     
     P = r;
     Type A(m);
     invert(m);
     Type S(m);
     
-    A.insert(A.begin(), size + 1, false);
-    S.insert(S.begin(), size + 1, false);
-    P.insert(P.begin(), false);
-    P.insert(P.end(), size, false);
+    A.push_front(r.size() + 1, false);
+    S.push_front(r.size() + 1, false);
+    P.push_back(m.size(), false);
+    P.push_front(false);
     
-    for (size_type i = 0; i < size; ++i) {
+    for (size_type i = 0; i < r.size(); ++i) {
         if (P[0] == true && P[1] == false) {
             add(P, A, P);
         }
@@ -186,6 +186,5 @@ void vmanip::mul(Type m, Type r, Type &P) {
         rshift(P, 1);
     }
     
-    P.erase(P.end());
-    P.erase(P.begin());
+    P.pop_front();
 }
